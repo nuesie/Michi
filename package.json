@@ -1,0 +1,29 @@
+{
+  "name": "michi",
+  "version": "0.0.1",
+  "description": "Node Email Builder",
+  "main": "index.js",
+  "bin": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuesie/Michi.git"
+  },
+  "author": "nuesie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nuesie/Michi/issues"
+  },
+  "homepage": "https://github.com/nuesie/Michi#readme",
+  "devDependencies": {
+    "eslint": "^2.10.1"
+  },
+  "dependencies": {
+    "colors": "^1.1.2",
+    "dustjs-linkedin": "^2.7.2",
+    "node-sass": "^3.7.0",
+    "watch": "^0.18.0"
+  }
+}
