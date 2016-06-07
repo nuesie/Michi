@@ -18,7 +18,7 @@ let Args    = require('./lib/args'),
  *
  * @ToDo:
  *   - Add node-mailer
- *   - Add express/browser refresh
+ *   - Add browser refresh
  *   - Add targeted builds
  */
 
@@ -220,6 +220,7 @@ let Michi = function (options) {
     /**
      * _buildProject()
      *
+     * - Clean it.
      */
 
     function _buildProject(project, context, templates, i18n) {
@@ -458,14 +459,7 @@ let Michi = function (options) {
      * _send()
      */
 
-    function _send() {
-        // --send
-        // --send --to=foo@bar.com,foobar@foobar.com
-        //
-        //
-        // get project send arr from Options.get('config_file').send
-        // loop -> send html files to split '--to' params
-    }
+    function _send() {}
 
     /**
      * _configurePackages()

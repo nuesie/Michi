@@ -1,20 +1,20 @@
-# Michi
-Node Email Builder
+<div><img src="http://i.imgur.com/PSA6IHh.png"></div>
+
+**0.0.1** Node Email Builder
 
 ## Requirements
 * [Node 6.x](https://nodejs.org/)
+
+## Features
+* [Dust](http://www.dustjs.com/) templates
+* [SASS](http://sass-lang.com/) CSS
+* i18n
 
 ## Install
 
 ```shell
 $ npm install michi -g
 ```
-
-## Features
-
-* [Dust](http://www.dustjs.com/) templates
-* [SASS](http://sass-lang.com/) stylesheets
-* i18n support
 
 ## Quick Start
 **Setup workspace**
@@ -55,25 +55,21 @@ michi/
   michi.config.js
 </pre>
 
-## Context Object
-
-Templates have access to a context object, which contains the config module, a single i18n module, and compiled stylesheets.
-
-## Project Anatomy
-
 ### Workspace Config
-
-Michi loads **michi.config.js** first to determine which projects to build. In the following example, the project folder `michi/src/untitled` will be loaded and compiled.
 
 ```javascript
 module.exports = {
-    'projects': ['untitled']
+    'projects': [
+        'untitled', // michi/src/untitled
+        'foobar',   // michi/src/foobar
+        'foo'       // michi/src/foobar
+    ]
 };
 ```
 
-### Project Config
+## Project Anatomy
 
-Each project contains a **config.js** module, which is the primary context object passed to each template for all locales. The purpose of these modules is to store data/flags for manipulating Dust templates. For example, telling a Dust template which kind of hero snippet to render.
+### Project Config
 
 ```javascript
 module.exports = {
@@ -85,8 +81,6 @@ module.exports = {
 
 ### i18n
 
-i18n modules are for storing localized copy that is passed to each template. For each locale module, Michi will generate a separate HTML file and append the module's filename at the end. For example, if this module's filename were `us.js`, the build filename would be `index_us.js`.
-
 ```javascript
 module.exports = {
     'title': 'Tommy Tricker and the Stamp Traveler',
@@ -94,27 +88,7 @@ module.exports = {
 };
 ```
 
-### Templates
-
-```html
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <title>{i18n.title}</title>
-    <style>
-        {styles.head_css|s}
-    </style>
-</head>
-<body>
-    <h1>{i18n.title}</h1>
-    <p>{i18n.description}</p>
-</body>
-</html>
-```
-
 ### Styles
-
-Classes in the **global.scss** stylesheet are parsed and bundled in the context's 'styles' property, and all stylesheets are stored separately with corresponding filenames.
 
 ```sass
 // global.scss
@@ -138,4 +112,22 @@ Classes in the **global.scss** stylesheet are parsed and bundled in the context'
 </style>
 
 <h1 style="{styles.title}">...</h1>
+```
+
+### Templates
+
+```html
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>{i18n.title}</title>
+    <style>
+        {styles.head_css|s}
+    </style>
+</head>
+<body>
+    <h1>{i18n.title}</h1>
+    <p>{i18n.description}</p>
+</body>
+</html>
 ```
